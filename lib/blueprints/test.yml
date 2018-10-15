@@ -1,0 +1,17 @@
+---
+name: TripleAnd
+in:
+  in1: wire
+  in2: wire
+  in3: wire
+components:
+  and1:
+    class: AndGate
+    in1: in.in1
+    in2: in.in2
+  and2:
+    class: AndGate
+    in1: in.in3
+    in2: and1.out
+out:
+  out: and2.out

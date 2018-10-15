@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/miniputer'
+if ARGV[0] == 'box'
+  circuit = Object.const_get(ARGV[1])
+  Machine.new(circuit: circuit).irun
+else
+  machine = Object.const_get(ARGV[0])
+  machine.build.irun
+end
