@@ -34,7 +34,7 @@ class DecimalToEightBitBinary < CompositeComponent
           [:decimal_goal, :incr]
         ],
 
-        [:eq, :out] => [[:neq, :in1]],
+        [:eq, :out] => [[:neq, :in1], [:OUT, :done]],
         [:dual_counter, :incr_done] => [[:n_incr_done, :in1]],
 
         [:set_pulse, :out] => [

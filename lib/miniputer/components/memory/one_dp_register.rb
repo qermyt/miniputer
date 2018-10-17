@@ -42,6 +42,10 @@ class OneDpRegister < CompositeComponent
         save_path1: OrGate,
         save_path2: OrGate,
         save_gate: AndGate,
+
+        reset_path: OrGate,
+        init: NorLatch,
+
         incr_pulse: LongPulse,
         high: HighSource,
         low: LowSource,
@@ -63,7 +67,10 @@ class OneDpRegister < CompositeComponent
           [:save_path1, :in1]
         ],
 
-        [:IN, :reset] => [
+        [:IN, :reset] => [[:reset_path, :in1]],
+        [:init, :nq] => [[:reset_path, :in2]],
+
+        [:reset_path, :out] => [
           [:reset_selector0, :selector_bit],
           [:reset_selector1, :selector_bit],
           [:reset_selector2, :selector_bit],
@@ -129,7 +136,8 @@ class OneDpRegister < CompositeComponent
           [:reset_selector6, :in2],
           [:reset_selector7, :in2],
           [:reset_selector8, :in2],
-          [:reset_selector9, :in2]
+          [:reset_selector9, :in2],
+          [:init, :reset]
         ],
 
         [:reset_selector0, :out] => [[:d0, :data_bit]],
@@ -144,7 +152,7 @@ class OneDpRegister < CompositeComponent
         [:reset_selector9, :out] => [[:d9, :data_bit]],
 
 
-        [:d0, :q] => [[:set_selector1, :in1], [:OUT, :d0]],
+        [:d0, :q] => [[:set_selector1, :in1], [:init, :set], [:OUT, :d0]],
         [:d1, :q] => [[:set_selector2, :in1], [:OUT, :d1]],
         [:d2, :q] => [[:set_selector3, :in1], [:OUT, :d2]],
         [:d3, :q] => [[:set_selector4, :in1], [:OUT, :d3]],

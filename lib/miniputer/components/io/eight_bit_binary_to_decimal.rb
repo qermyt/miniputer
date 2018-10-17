@@ -15,6 +15,7 @@ class EightBitBinaryToDecimal < CompositeComponent
         incr_gate: AndGate,
         incr_gate2: AndGate,
         n_incr_done: NotGate,
+
         zero: ZeroSource,
         dec_zero: DecimalZeroSource,
         low: LowSource,
@@ -24,8 +25,7 @@ class EightBitBinaryToDecimal < CompositeComponent
         [:IN, :in_data] => [[:binary_goal, :in_data]],
         [:IN, :set] => [
           [:set_pulse, :in1],
-          [:nset, :in1],
-          #[:incr_gate2, :in2]
+          [:nset, :in1]
         ],
 
         [:eq, :out] => [[:neq, :in1]],
