@@ -123,7 +123,7 @@ class StatePrinter
 
   def switch_pos(i, j)
     row, col = switches_pos
-    [row + 4*i + 2, col + 2*j]
+    [row + 4*i + 2, col + 3*j + 1]
   end
 
   def display_flow_info
@@ -192,7 +192,7 @@ class StatePrinter
   end
 
   def display_switch(switch)
-    ch = switch.value ? '/ ' : '| '
+    ch = switch.value ? ' / ' : ' | '
     chassis.addstr(ch)
   end
 

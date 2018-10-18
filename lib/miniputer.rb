@@ -13,6 +13,7 @@ require_relative 'miniputer/constants'
 require_relative 'miniputer/machines/machine'
 require_relative 'miniputer/machines/adder_box'
 require_relative 'miniputer/machines/friendly_adder_box'
+require_relative 'miniputer/machines/friendly_add_sub_box'
 require_relative 'miniputer/machines/add_sub_box'
 require_relative 'miniputer/machines/clock_box'
 
