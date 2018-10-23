@@ -2,7 +2,7 @@ require_relative '../test_helper'
 require 'yaml'
 
 RSpec.describe BlueprintTranslater do
-  let(:template_filename) { 'tests/templates/bit_adder_blueprint.yml' }
+  let(:template_filename) { 'spec/templates/bit_adder_blueprint.yml' }
   let(:yaml_blueprint) { File.read(template_filename) }
 
   describe '.class_to_yml' do
