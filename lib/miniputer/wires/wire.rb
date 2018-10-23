@@ -5,12 +5,16 @@ class Wire
   attr_reader :label
 
   def self.build(label)
+    wire_type(label).new(label: label)
+  end
+
+  def self.wire_type(label)
     if label.to_s.include?('decimal')
-      DecimalWire.new
+      DecimalWire
     elsif label.to_s.include?('data') && !label.to_s.include?('bit')
-      DataWire.new
+      DataWire
     else
-      Wire.new(label: label)
+      Wire
     end
   end
 

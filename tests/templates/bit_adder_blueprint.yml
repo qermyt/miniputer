@@ -1,0 +1,24 @@
+---
+name: BitAdder
+in:
+  bit1: Wire
+  bit2: Wire
+components:
+  or:
+    class: OrGate
+    in1: in.bit1
+    in2: in.bit2
+  carry:
+    class: AndGate
+    in1: in.bit1
+    in2: in.bit2
+  n_carry:
+    class: NotGate
+    in1: carry.out
+  sum:
+    class: AndGate
+    in1: or.out
+    in2: n_carry.out
+out:
+  sum: sum.out
+  carry: carry.out
