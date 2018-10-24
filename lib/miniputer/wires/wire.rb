@@ -4,8 +4,8 @@ class Wire
   attr_reader :downstream_connections
   attr_reader :label
 
-  def self.build(label)
-    wire_type(label).new(label: label)
+  def self.build(label, value: LOW)
+    wire_type(label).new(label: label, value: value)
   end
 
   def self.wire_type(label)
@@ -18,11 +18,11 @@ class Wire
     end
   end
 
-  def initialize(value = false, upstream: nil, label: nil)
+  def initialize(val = LOW, upstream: nil, label: nil, value: LOW)
     @upstream = upstream
     @downstream_connections = []
     @label = label
-    set_value(value)
+    set_value(val || value)
   end
 
   def inspect

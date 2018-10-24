@@ -1,6 +1,3 @@
-require 'rspec'
-require_relative '../test_helper'
-require 'byebug'
 
 RSpec.describe GatedLatch do
   describe '#perform' do

@@ -1,12 +1,14 @@
 require_relative 'component_base'
 
 class AtomicComponent < ComponentBase
-  def self.build_input_wires
-    input_labels.map { |label| [label, Wire.new] }.to_h
+  def self.build_input_wires(wire_values)
+    input_labels.map do |label|
+      [label, Wire.new(value: wire_values[label] || LOW)]
+    end.to_h
   end
 
-  def self.build
-    self.new(input_wires: build_input_wires)
+  def self.build(in_values = {})
+    self.new(input_wires: build_input_wires(in_values))
   end
 
   def load

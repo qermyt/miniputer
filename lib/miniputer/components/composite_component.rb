@@ -1,12 +1,16 @@
 require_relative 'component_base'
 
 class CompositeComponent < ComponentBase
-  def self.build
-    self.new(input_wires: build_input_wires).tap(&:connect_wires)
+  def self.build(wire_values = {})
+    self.new(
+      input_wires: build_input_wires(wire_values)
+    ).tap(&:connect_wires)
   end
 
-  def self.build_input_wires
-    input_labels.map { |label| [label, Wire.build(label)] }.to_h
+  def self.build_input_wires(wire_values)
+    input_labels.map { |label|
+      [label, Wire.build(label, value: wire_values[label] || LOW)]
+    }.to_h
   end
 
   def self.input_labels

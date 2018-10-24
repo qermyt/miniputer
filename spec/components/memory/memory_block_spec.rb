@@ -1,6 +1,3 @@
-require 'rspec'
-require_relative '../test_helper'
-require 'byebug'
 
 RSpec.describe MemoryBlock do
   describe '#perform' do

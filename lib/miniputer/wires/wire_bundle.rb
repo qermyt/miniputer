@@ -1,8 +1,16 @@
 class WireBundle
   attr_accessor :wires
 
-  def initialize(*wires, label: nil)
-    @wires = wires.empty? ? self.class.no_of_wires.times.map { Wire.new } : wires
+  def initialize(*wires, label: nil, value: nil)
+    bundle_size = self.class.no_of_wires
+    @wires =
+      if wires.empty?
+        bundle_size.times.zip(value || []).map { |_, v|
+          Wire.new(value: v || LOW)
+        }
+      else
+        wires
+      end
   end
 
   def [](n)
